@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import express from 'express'
 
-import { ERROR_MSG } from '../../core/Message'
+import { ERROR_MSG, RES_STATUS } from '../../core/Message'
 import { upload } from '../../core/Upload'
 import path = require('path')
 
@@ -17,23 +17,25 @@ router.get('/:filename', async (req: Request, res: Response) => {
         req.params.filename
       ),
       (err) => {
-        if (err) res.status(500).send(ERROR_MSG.CANT_DOWNLOAD)
+        if (err)
+          res.status(RES_STATUS.INTERNAL_ERROR).send(ERROR_MSG.CANT_DOWNLOAD)
       }
     )
   } catch (error) {
-    res.status(500).json(error.message)
+    res.status(RES_STATUS.INTERNAL_ERROR).json(error.message)
   }
 })
 
 router.post('/', upload.single('pic'), async (req: any, res: Response) => {
   try {
-    if (!req.file) return ERROR_MSG.NO_FILE_UPLOAD
+    if (!req.file)
+      return res.status(RES_STATUS.NOT_FOUND).send(ERROR_MSG.NO_FILE_UPLOAD)
     res.status(200).json({
       message: 'File Uploaded Successfully',
       filename: req.file.filename,
     })
   } catch (error) {
-    res.status(500).json(error.message)
+    res.status(RES_STATUS.INTERNAL_ERROR).json(error.message)
   }
 })
 
