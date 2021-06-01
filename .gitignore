@@ -1,0 +1,14 @@
+
+# ignore 3rd party lib
+node_modules
+
+# Ignore built files
+build
+
+# Environment varibles
+*.env
+*.env.*
+
+public
+
+package-lock.json

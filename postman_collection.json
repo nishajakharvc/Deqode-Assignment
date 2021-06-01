@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "caa0254a-ffa7-4b45-80ff-eb21d6cda2b1",
+		"name": "Deqode Assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "File Upload",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "pic",
+									"type": "file",
+									"src": "/home/nishajakhar/Downloads/FilmVideo-1621855638239-986999916.m3u8"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{app_url}}/image/",
+							"host": [
+								"{{app_url}}"
+							],
+							"path": [
+								"image",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download File",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Romantic",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{app_url}}/image/Pic-1622559581791",
+							"host": [
+								"{{app_url}}"
+							],
+							"path": [
+								"image",
+								"Pic-1622559581791"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
